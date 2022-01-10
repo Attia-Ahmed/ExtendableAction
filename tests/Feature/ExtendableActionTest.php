@@ -49,5 +49,36 @@ class ExtendableActionTest extends TestCase
         );
     }
 
+    public function test_action_modifies_result_of_extendable_action()
+    {
+
+        $dummyExtendableAction = app(DummyExtendableAction::class)
+            ->setActions([DummyAction::class]);
+
+        $this->assertEquals(
+            ["my_input" => 10,
+             "modified_by" => DummyAction::class],
+            $dummyExtendableAction(10)
+        );
+    }
+
+
+
+
+    public function test_combine_filters_with_actions()
+    {
+
+        $dummyExtendableAction = app(DummyExtendableAction::class)
+            ->setFilters([
+                DummyFilter::class,
+                DummyFilter::class]);
+
+        $this->assertEquals(
+            ["my_input" => 12,
+             "modified_by" => DummyExtendableAction::class],
+            $dummyExtendableAction(10)
+        );
+    }
+
 
 }
