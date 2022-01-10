@@ -30,7 +30,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ExtendableActionBaseServiceProvider"
+                "AttiaAhmed\\ExtendableAction\\ExtendableActionBaseServiceProvider"
             ]
         }
     }
