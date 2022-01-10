@@ -9,13 +9,13 @@
         }
     ],
     "require": {
-        "laravel/framework": "^v6",
+        "laravel/framework": "^8",
         "php": "^7.3|^8.0",
         "ext-json": "*"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.9",
-        "mockery/mockery": "^1.2"
+        "orchestra/testbench": "^v6",
+        "mockery/mockery": "^1.4.4"
     },
     "autoload": {
         "psr-4": {
