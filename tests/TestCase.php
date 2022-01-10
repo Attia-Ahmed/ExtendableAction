@@ -2,9 +2,6 @@
 
 namespace AttiaAhmed\ExtendableAction\Tests;
 
-use Mockery;
-use AttiaAhmed\ExtendableAction\ExtendableAction;
-use AttiaAhmed\ExtendableAction\ExtendableActionBaseServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -12,5 +9,5 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
     }
-    
+
 }
