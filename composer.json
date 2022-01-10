@@ -1,0 +1,37 @@
+{
+    "name": "attia-ahmed/extendable-action",
+    "description": "An Abstract classes to make extendable actions for the Laravel framework.",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Attia Ahmed",
+            "email": "attia.a.ahmed@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^v6",
+        "php": "^7.3|^8.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.9",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "AttiaAhmed\\ExtendableAction\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AttiaAhmed\\ExtendableAction\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ExtendableActionBaseServiceProvider"
+            ]
+        }
+    }
+}
