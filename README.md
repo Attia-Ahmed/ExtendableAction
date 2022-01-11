@@ -110,6 +110,20 @@ return [
 ];
 ```
 
+4. Call your Extendable action :
+
+```ExtendableAction``` is an Invokable Class and can be called by as one of following examples:
+
+
+```php
+//RECOMMENDED so it automatically be executed it while injecting its dependencies
+$result = app(ExampleExtendableAction::class)(...$args);
+```
+or
+```php
+$result = (new ExampleExtendableAction())(...$args);
+```
+
 # Usage Notes
 
 *⚠️This package is a proof of concept and IS NOT READY for production.⚠️*
