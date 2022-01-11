@@ -13,7 +13,7 @@ pluggable way.
 
 ## Installation
 
-- 1- Add to your `repositories` in `composer.json`
+1. Add to your `repositories` in `composer.json`
 
 ```json
 {
@@ -22,7 +22,7 @@ pluggable way.
 }
 ```
 
-- 2- via composer
+2. via composer
 
 ```bash
 $ composer require attia-ahmed/extendable-action
@@ -30,7 +30,7 @@ $ composer require attia-ahmed/extendable-action
 
 or add it by hand to your `composer.json` file.
 
-- 3- You can publish the config file with:
+3. You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --provider="AttiaAhmed\ExtendableAction\ExtendableActionBaseServiceProvider"
@@ -38,7 +38,7 @@ php artisan vendor:publish --provider="AttiaAhmed\ExtendableAction\ExtendableAct
 
 ## Usage
 
-- 1-make your extendable action:
+1. make your extendable action:
 
 Which is the main functionality that needs to be extended. You can make your extendable action by
 extending `ExtendableAction` class and define the ```run``` method that take any number of parameters (will be modified
@@ -55,7 +55,7 @@ class ExampleExtendableAction extends ExtendableAction
 }
 ```
 
-- 2- make your filters:
+2. make your filters:
 
 Which are classes that modifies the `ExtendableAction` input parameters or do some logic/check before running the main
 functionality. You can make your Filter by extending `Filter` class and override the ```apply``` method that
@@ -74,7 +74,7 @@ class ExampleFilter extends Filter
 }
 ```
 
-- 3- make your actions:
+3. make your actions:
 
 Which are classes that modifies the `ExtendableAction` result or do some logic/check after running the main
 functionality. You can make your Action by extending `Action` class and override the ```apply``` method that takes the
@@ -91,7 +91,7 @@ class ExampleAction extends Action
 }
 ```
 
-- 4- Link your Filters and Actions to your Extendable action :
+4. Link your Filters and Actions to your Extendable action :
 
 You can link your Filters and Action to your Extendable Action by adding new element to `extendable-action.php`
 or by your custom implementation by overriding ```getFilters``` and ```getFilters``` of ```ExtendableAction``` class
