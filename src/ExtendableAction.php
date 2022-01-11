@@ -31,15 +31,6 @@ abstract class ExtendableAction
     }
 
     /**
-     * @return String
-     */
-    protected function getConfigName()
-    {
-
-        return "extendable-action." . get_class($this);
-    }
-
-    /**
      * @return array
      */
     protected function getActionConfigs(): array
@@ -49,47 +40,12 @@ abstract class ExtendableAction
     }
 
     /**
-     * @return array
+     * @return String
      */
-    protected function getFilters(): array
+    protected function getConfigName()
     {
 
-        return   $this->configs["filters"] ?? [];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getActions(): array
-    {
-
-        return   $this->configs["actions"] ?? [];
-    }
-
-    /**
-     * @param array $args
-     * @return array
-     */
-    protected function applyFilters(array $args): array
-    {
-        return app(Pipeline::class)
-            ->send($args)
-            ->through($this->getFilters())
-            ->thenReturn();
-    }
-
-    /**
-     * @param mixed $result
-     * @return mixed
-     */
-    protected function applyActions(array $parameters, mixed $result): mixed
-    {
-        return app(Pipeline::class)
-            ->send([
-                "parameters" => $parameters,
-                "result"    => $result])
-            ->through($this->getActions())
-            ->thenReturn()["result"];
+        return "extendable-action." . get_class($this);
     }
 
     /**
@@ -129,6 +85,50 @@ abstract class ExtendableAction
 
         return $args;
 
+    }
+
+    /**
+     * @param array $args
+     * @return array
+     */
+    protected function applyFilters(array $args): array
+    {
+        return app(Pipeline::class)
+            ->send($args)
+            ->through($this->getFilters())
+            ->thenReturn();
+    }
+
+    /**
+     * @return array
+     */
+    protected function getFilters(): array
+    {
+
+        return $this->configs["filters"] ?? [];
+    }
+
+    /**
+     * @param mixed $result
+     * @return mixed
+     */
+    protected function applyActions(array $parameters, mixed $result): mixed
+    {
+        return app(Pipeline::class)
+            ->send([
+                "parameters" => $parameters,
+                "result"     => $result])
+            ->through($this->getActions())
+            ->thenReturn()["result"];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getActions(): array
+    {
+
+        return $this->configs["actions"] ?? [];
     }
 
     public function __call(string $name, array $arguments)
