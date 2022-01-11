@@ -1,8 +1,8 @@
 ExtendableAction
 ==========
 
-Laravel packages make Extendable Actions to make your laravel project extendable to new features without touching old
-code.
+Laravel packages that allows you to make your laravel project extendable and easy to include new features without touching old
+code throgh using Extendable Actions .
 
 ## Why ExtendableAction?
 
