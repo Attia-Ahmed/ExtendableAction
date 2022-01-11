@@ -9,7 +9,7 @@ class ExampleExtendableAction extends ExtendableAction
 {
     public function run($name)
     {
-        return "Hello ".$name;
+        return "Hello " . $name;
     }
 
 }
