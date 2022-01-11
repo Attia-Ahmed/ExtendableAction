@@ -112,5 +112,5 @@ return [
 
 # Usage Notes
 
-*This package is a proof of concept and IS NOT READY for production.*
+*⚠️This package is a proof of concept and IS NOT READY for production.⚠️*
 
