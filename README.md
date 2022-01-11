@@ -42,7 +42,7 @@ php artisan vendor:publish --provider="AttiaAhmed\ExtendableAction\ExtendableAct
 
 Which is the main functionality that needs to be extended. You can make your extendable action by
 extending `ExtendableAction` class and define the ```run``` method that take any number of parameters (will be modified
-by filters) and return result (will be modified by actions)
+by filters) and return result (will be modified by actions) then it will be called as Invokable Class
 Example:
 
 ```php
@@ -110,7 +110,7 @@ return [
 ];
 ```
 
-4. Call your Extendable action :
+5. Call your Extendable action :
 
 ```ExtendableAction``` is an Invokable Class and can be called by as one of following examples:
 
