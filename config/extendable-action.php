@@ -1,10 +1,30 @@
 <?php
 
-use AttiaAhmed\ExtendableAction\TestClass;
-use AttiaAhmed\ExtendableAction\ExampleFilter;
+
+use AttiaAhmed\ExtendableAction\Examples\ExampleAction;
+use AttiaAhmed\ExtendableAction\Examples\ExampleFilter;
+use AttiaAhmed\ExtendableAction\Examples\ExampleExtendableAction;
 
 return [
-    TestClass::class => ["filters" =>[
-        ExampleFilter::class
-    ]]
+
+    /*
+    |--------------------------------------------------------------------------
+    | Extendable Actions Configuration
+    |--------------------------------------------------------------------------
+    |
+    | These File is used to extend Actions with filters and actions.
+    | the following ExampleExtendableAction is for illustration purposes
+    | and should be removed.
+    |
+    */
+
+    ExampleExtendableAction::class => [
+        "filters" => [
+            ExampleFilter::class
+        ],
+        "actions" => [
+            ExampleAction::class
+        ]
+    ],
+
 ];

@@ -1,7 +1,8 @@
 <?php
 
-namespace AttiaAhmed\ExtendableAction\Tests;
+namespace AttiaAhmed\ExtendableAction\Tests\Features;
 
+use AttiaAhmed\ExtendableAction\Tests\TestCase;
 use AttiaAhmed\ExtendableAction\Tests\Resources\DummyFilter;
 use AttiaAhmed\ExtendableAction\Tests\Resources\DummyAction;
 use AttiaAhmed\ExtendableAction\Tests\Resources\DummyExtendableAction;
@@ -15,8 +16,8 @@ class ExtendableActionTest extends TestCase
         $dummyExtendableAction = app(DummyExtendableAction::class);
 
         $this->assertEquals(
-            ["my_input" => 10,
-                "modified_by" => DummyExtendableAction::class],
+            ["my_input"    => 10,
+             "modified_by" => DummyExtendableAction::class],
             $dummyExtendableAction(10)
         );
     }
@@ -25,10 +26,10 @@ class ExtendableActionTest extends TestCase
     {
 
         $dummyExtendableAction = app(DummyExtendableAction::class)
-        ->setFilters([DummyFilter::class]);
+            ->setFilters([DummyFilter::class]);
 
         $this->assertEquals(
-            ["my_input" => 11,
+            ["my_input"    => 11,
              "modified_by" => DummyExtendableAction::class],
             $dummyExtendableAction(10)
         );
@@ -43,7 +44,7 @@ class ExtendableActionTest extends TestCase
                 DummyFilter::class]);
 
         $this->assertEquals(
-            ["my_input" => 12,
+            ["my_input"    => 12,
              "modified_by" => DummyExtendableAction::class],
             $dummyExtendableAction(10)
         );
@@ -56,26 +57,23 @@ class ExtendableActionTest extends TestCase
             ->setActions([DummyAction::class]);
 
         $this->assertEquals(
-            ["my_input" => 10,
+            ["my_input"    => 10,
              "modified_by" => DummyAction::class],
             $dummyExtendableAction(10)
         );
     }
 
 
-
-
     public function test_combine_filters_with_actions()
     {
 
         $dummyExtendableAction = app(DummyExtendableAction::class)
-            ->setFilters([
-                DummyFilter::class,
-                DummyFilter::class]);
+            ->setFilters([DummyFilter::class])
+            ->setActions([DummyAction::class]);;
 
         $this->assertEquals(
-            ["my_input" => 12,
-             "modified_by" => DummyExtendableAction::class],
+            ["my_input"    => 11,
+             "modified_by" => DummyAction::class],
             $dummyExtendableAction(10)
         );
     }
