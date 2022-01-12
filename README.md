@@ -14,16 +14,8 @@ pluggable way.
 
 ## Installation
 
-1. Add to your `repositories` in `composer.json`
 
-```json
-{
-  "type": "vcs",
-  "url": "https://github.com/Attia-Ahmed/ExtendableAction"
-}
-```
-
-2. via composer
+1. Install via composer
 
 ```bash
 $ composer require attia-ahmed/extendable-action
@@ -31,7 +23,7 @@ $ composer require attia-ahmed/extendable-action
 
 or add it by hand to your `composer.json` file.
 
-3. You can publish the config file with:
+2. Publish the config file with:
 
 ```bash
 php artisan vendor:publish --provider="AttiaAhmed\ExtendableAction\ExtendableActionBaseServiceProvider"
