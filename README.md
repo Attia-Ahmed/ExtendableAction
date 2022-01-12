@@ -14,16 +14,8 @@ pluggable way.
 
 ## Installation
 
-1. Add to your `repositories` in `composer.json`
 
-```json
-{
-  "type": "vcs",
-  "url": "https://github.com/Attia-Ahmed/ExtendableAction"
-}
-```
-
-2. via composer
+1. install via composer
 
 ```bash
 $ composer require attia-ahmed/extendable-action
