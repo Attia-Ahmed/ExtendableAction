@@ -14,39 +14,8 @@ use Illuminate\Pipeline\Pipeline;
 abstract class ExtendableAction
 {
 
-    /**
-     * @var array
-     */
-    protected array $configs = [];
-
 
     protected string $method = 'run';
-
-
-    public function __construct()
-    {
-        $this->configs = $this->getActionConfigs();
-
-
-    }
-
-    /**
-     * @return array
-     */
-    protected function getActionConfigs(): array
-    {
-
-        return config($this->getConfigName(), []);
-    }
-
-    /**
-     * @return String
-     */
-    protected function getConfigName()
-    {
-
-        return "extendable-action." . get_class($this);
-    }
 
     /**
      * @param mixed ...$args
@@ -58,7 +27,7 @@ abstract class ExtendableAction
         $params = $this->convertToNamedParams($args);
 
         $params = $this->applyFilters($params);
-        $result = call_user_func_array([$this, $this->method], $params);
+        $result = app()->call([$this, $this->method], $params);
 
         return $this->applyActions($params, $result);
 
@@ -104,8 +73,17 @@ abstract class ExtendableAction
      */
     protected function getFilters(): array
     {
+        return $this->getConfigs()["filters"] ?? [];
+    }
 
-        return $this->configs["filters"] ?? [];
+    /**
+     * @return String
+     */
+    private function getConfigs(): array
+    {
+        $configs = app("extendable-actions-configs") ?? [];
+
+        return $configs[get_class($this)] ?? [];
     }
 
     /**
@@ -128,7 +106,7 @@ abstract class ExtendableAction
     protected function getActions(): array
     {
 
-        return $this->configs["actions"] ?? [];
+        return $this->getConfigs()["actions"] ?? [];
     }
 
     public function __call(string $name, array $arguments)
