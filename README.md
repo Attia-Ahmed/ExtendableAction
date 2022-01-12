@@ -2,13 +2,14 @@ ExtendableAction
 ==========
 
 Laravel packages that allows you to make your laravel project extendable and easy to include new features without touching old
-code throgh using Extendable Actions .
+code throgh Extendable Actions .
 
 ## Why ExtendableAction?
 
-Having large a code base, and having dynamic features leads to have a missy code base with huge maintainability
-headache, so this package implements main of Wordpress pluggable features by using of Filters and Actions (
-see [Wordpress Hooks](https://developer.wordpress.org/plugins/hooks/) ), so it allows you to expand your code base in a
+Having a large codebase and dynamic features leads to a missy codebase with huge maintainability
+headache!
+This package implements the main concept of WordPress pluggable features by using of Filters and Actions (
+See [WordPress Hooks](https://developer.wordpress.org/plugins/hooks/) ) that allow you to expand your codebase in a
 pluggable way.
 
 ## Installation
@@ -126,5 +127,5 @@ $result = (new ExampleExtendableAction())(...$args);
 
 # Usage Notes
 
-*⚠️This package is a proof of concept and IS NOT READY for production.⚠️*
+## *⚠️This package is a proof of concept and IS NOT READY for production.⚠️*
 
