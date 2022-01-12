@@ -12,6 +12,7 @@ class ExtendableActionTest extends TestCase
 
     public function test_extendable_action_returns_run_method_results()
     {
+        $this->setConfigs([]);
 
         $dummyExtendableAction = app(DummyExtendableAction::class);
 
@@ -24,9 +25,11 @@ class ExtendableActionTest extends TestCase
 
     public function test_filter_alert_parameters_for_extendable_action()
     {
-
-        $dummyExtendableAction = app(DummyExtendableAction::class)
-            ->setFilters([DummyFilter::class]);
+        $this->setConfigs([
+            DummyExtendableAction::class => [
+                "filters" => [DummyFilter::class]
+            ]]);
+        $dummyExtendableAction = app(DummyExtendableAction::class);
 
         $this->assertEquals(
             ["my_input"    => 11,
@@ -35,13 +38,16 @@ class ExtendableActionTest extends TestCase
         );
     }
 
-    public function test_chaining_filters_to_action()
+    public function test_chaining_filters()
     {
-
-        $dummyExtendableAction = app(DummyExtendableAction::class)
-            ->setFilters([
-                DummyFilter::class,
-                DummyFilter::class]);
+        $this->setConfigs([
+            DummyExtendableAction::class => [
+                "filters" => [
+                    DummyFilter::class,
+                    DummyFilter::class
+                ]
+            ]]);
+        $dummyExtendableAction = app(DummyExtendableAction::class);
 
         $this->assertEquals(
             ["my_input"    => 12,
@@ -52,9 +58,12 @@ class ExtendableActionTest extends TestCase
 
     public function test_action_modifies_result_of_extendable_action()
     {
+        $this->setConfigs([
+            DummyExtendableAction::class => [
+                "actions" => [DummyAction::class]
+            ]]);
 
-        $dummyExtendableAction = app(DummyExtendableAction::class)
-            ->setActions([DummyAction::class]);
+        $dummyExtendableAction = app(DummyExtendableAction::class);
 
         $this->assertEquals(
             ["my_input"    => 10,
@@ -66,10 +75,13 @@ class ExtendableActionTest extends TestCase
 
     public function test_combine_filters_with_actions()
     {
+        $this->setConfigs([
+            DummyExtendableAction::class => [
+                "filters" => [DummyFilter::class],
+                "actions" => [DummyAction::class]
+            ]]);
 
-        $dummyExtendableAction = app(DummyExtendableAction::class)
-            ->setFilters([DummyFilter::class])
-            ->setActions([DummyAction::class]);;
+        $dummyExtendableAction = app(DummyExtendableAction::class);
 
         $this->assertEquals(
             ["my_input"    => 11,

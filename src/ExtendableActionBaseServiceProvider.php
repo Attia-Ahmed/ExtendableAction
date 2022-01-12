@@ -26,9 +26,10 @@ class ExtendableActionBaseServiceProvider extends ServiceProvider
      */
     protected function registerPublishing()
     {
+
         $this->publishes([
-            __DIR__ . '/../config/extendable-action.php' => config_path('extendable-action.php'),
-        ], 'extendable-action-config');
+            __DIR__.'/../stubs/ExtendableActionAppServiceProvider.stub' => app_path('Providers/ExtendableActionAppServiceProvider.php'),
+        ], 'extendable-action-provider');
     }
 
 }
